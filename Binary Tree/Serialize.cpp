@@ -41,6 +41,47 @@ TreeNode* makeTree1(){
     return n1; 
 }
 
+TreeNode* makeTree2(){
+    TreeNode* n1 = new TreeNode(10); 
+    TreeNode* n2 = new TreeNode(20); 
+    TreeNode* n3 = new TreeNode(30); 
+
+    n1->left = n2; 
+    n1->right = n3; 
+
+    return n1; 
+}
+
+TreeNode* makeTree3(){
+    TreeNode* n1 = new TreeNode(10); 
+    TreeNode* n2 = new TreeNode(20); 
+
+    n1->left = n2;
+
+    return n1; 
+}
+
+TreeNode* makeTree4(){
+    TreeNode* n1 = new TreeNode(10); 
+    TreeNode* n2 = new TreeNode(20); 
+    TreeNode* n3 = new TreeNode(30); 
+    TreeNode* n4 = new TreeNode(40); 
+
+    n1->left = n2; 
+    n2->left = n3; 
+    n3->right = n4; 
+
+    return n1; 
+}
+
+TreeNode* makeTree5(){
+    return new TreeNode(10); 
+}
+
+TreeNode* makeTree6(){
+    return NULL; 
+}
+
 void preorder(TreeNode* root){
     if(root == NULL) return; 
 
@@ -73,6 +114,12 @@ int main(){
     string serialRoot1 = serialize(root1); 
     cout<<serialRoot1<<endl; 
     cout<<(*serialRoot1.rbegin())<<endl; // Printing the last character. It should not be space
+
+    cout<<serialize(makeTree2())<<endl; 
+    cout<<serialize(makeTree3())<<endl; 
+    cout<<serialize(makeTree4())<<endl; 
+    cout<<serialize(makeTree5())<<endl; 
+    cout<<serialize(makeTree6())<<endl; 
 
     return 0; 
 }
