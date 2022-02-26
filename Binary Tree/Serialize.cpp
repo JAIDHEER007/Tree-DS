@@ -49,9 +49,30 @@ void preorder(TreeNode* root){
     preorder(root->right); 
 }
 
+void preorderString(TreeNode* root, string &data){
+    if(root == NULL){
+        data += "NULL "; 
+        return; 
+    } 
+    data += (to_string(root->val) + " "); 
+    preorderString(root->left, data);
+    preorderString(root->right, data);
+}
+
+string serialize(TreeNode* root){
+    string data = ""; 
+    preorderString(root, data); 
+    data.pop_back(); 
+    return data; 
+}
+
 int main(){
     TreeNode* root1 = makeTree1(); 
     preorder(root1); cout<<endl; 
+
+    string serialRoot1 = serialize(root1); 
+    cout<<serialRoot1<<endl; 
+    cout<<(*serialRoot1.rbegin())<<endl; // Printing the last character. It should not be space
 
     return 0; 
 }
